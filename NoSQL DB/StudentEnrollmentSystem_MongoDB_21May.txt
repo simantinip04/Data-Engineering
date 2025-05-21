@@ -69,10 +69,9 @@ array--
 
 7)Update the city of a specific student to "Mumbai"--
 db.enrollments.updateOne(
-... {
-...   studentId: 103},
-... { $set: { "address.city": "Mumbai"}}
-... )
+  { studentId: 103 },
+  { $set: { "address.city": "Mumbai", "address.state": "Maharashtra" } }
+)
 
 
 8)Set feesPaid to true for all students from "Delhi"--
