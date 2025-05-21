@@ -1,0 +1,95 @@
+Exercise: Student Enrollments System
+Database: campusdb
+Collection: enrollments
+
+1)Use a new database called campusdb --
+use campusdb
+switched to db campusdb
+
+2)Create a collection enrollments and insert 4 student documents--
+db.enrollments.insertMany([
+... {
+...   name: "Ananya Verma",
+...   studentId: 101,
+...   courses: ["Python","Java"],
+...   address: {city: "Delhi", state: "Delhi"},
+...   feesPaid: true
+... },
+... {
+...   name: "Rohan Mehta",
+...   studentId: 102,
+...   courses: ["Python","AI"],
+...   address: {city: "Bangalore", state: "Karnataka"},
+...   feesPaid: false
+... },
+... {
+...   name: "Sneha Kapoor",
+...   studentId: 103,
+...   courses: [],
+...   address: {city: "Hyderabad", state: "Telangana"},
+...   feesPaid: true
+... },
+... {
+...   name: "Imran Shaikh",
+...   studentId: 104,
+...   courses: ["Data Science", "Java"],
+...   address: {city: "Delhi", state: "Delhi"},
+...   feesPaid: false
+... }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('682d525bb6bb84e41586b01d'),
+    '1': ObjectId('682d525bb6bb84e41586b01e'),
+    '2': ObjectId('682d525bb6bb84e41586b01f'),
+    '3': ObjectId('682d525bb6bb84e41586b020')
+  }
+}
+
+3)Display all student records--
+db.enrollments.find().pretty()
+
+
+4)Find all students enrolled in "Python"--
+db.enrollments.find({courses:"Python"}).pretty()
+
+
+5)Find students from Delhi who have not paid fees--
+db.enrollments.find({"address.city":"Delhi", feesPaid: false}).pretty()
+
+
+6)Add a new course "AI Fundamentals" to a specific student's courses
+array--
+ db.enrollments.updateOne(
+... {studentId: 101},
+... {$push : {courses: "AI Fundamentals"}}
+... )
+
+
+7)Update the city of a specific student to "Mumbai"--
+db.enrollments.updateOne(
+... {
+...   studentId: 103},
+... { $set: { "address.city": "Mumbai"}}
+... )
+
+
+8)Set feesPaid to true for all students from "Delhi"--
+db.enrollments.updateMany(
+... { "address.city" : "Delhi"},
+... { $set: {feesPaid: true}}
+... )
+
+
+9)Remove "Java" course from any student who has it--
+db.enrollments.updateMany(
+... { courses: "Java"},
+... { $pull: {courses: "Java"}}
+... )
+
+
+10)Delete all students who have no courses enrolled (i.e., courses: [])--
+db.enrollments.deleteMany({courses: {$size: 0}})
+
+
