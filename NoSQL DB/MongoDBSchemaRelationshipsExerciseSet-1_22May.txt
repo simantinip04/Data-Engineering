@@ -1,0 +1,231 @@
+// Section 1: Working with Schemas & Data Types
+use trainingdb
+
+db.employees.insertMany([
+  {
+    name: "Pallavi",
+    age: 30,
+    isManager: true,
+    skills: ["JavaScript", "Node.js", "MongoDB"],
+    joiningDate: new Date("2021-03-15"),
+    profile: {
+      linkedin: "https://linkedin.com/in/pallavi",
+      portfolio: "https://pallavi.dev"
+    }
+  },
+  {
+    name: "Ketan",
+    age: 26,
+    isManager: false,
+    skills: ["HTML", "CSS"],
+    joiningDate: new Date("2022-06-01"),
+    profile: {
+      linkedin: "https://linkedin.com/in/ketan",
+      portfolio: "https://ketan.dev"
+    }
+  },
+  {
+    name: "Riya",
+    age: 28,
+    isManager: false,
+    skills: ["Python", "Flask", "MongoDB", "Docker"],
+    joiningDate: new Date("2023-01-10"),
+    profile: {
+      linkedin: "https://linkedin.com/in/riya",
+      portfolio: "https://riya.dev"
+    }
+  },
+  {
+    name: "Soham",
+    age: 35,
+    isManager: true,
+    skills: ["Java", "Spring"],
+    joiningDate: new Date("2020-07-20"),
+    profile: {
+      linkedin: "https://linkedin.com/in/soham",
+      portfolio: "https://soham.dev"
+    }
+  }
+])
+
+// More than 2 skills
+db.employees.find({ "skills.2": { $exists: true } })
+
+// Joined after a specific date
+db.employees.find({ joiningDate: { $gt: new Date("2022-01-01") } })
+
+// Add new field rating to one employee
+db.employees.updateOne(
+  { name: "Pallavi" },
+  { $set: { rating: 4.7 } }
+)
+
+// Find employees with rating of type double
+db.employees.find({ rating: { $type: "double" } })
+
+// Show only name and skills, exclude _id
+db.employees.find({}, { _id: 0, name: 1, skills: 1 })
+
+// Section 2: One-to-One (Embedded)
+use schooldb
+
+db.students.insertMany([
+  {
+    name: "Ketan",
+    guardian: { name: "Mahesh", phone: "9876543210", relation: "Father" }
+  },
+  {
+    name: "Pallavi",
+    guardian: { name: "Sunita", phone: "8765432109", relation: "Mother" }
+  },
+  {
+    name: "Riya",
+    guardian: { name: "Mahesh", phone: "7654321098", relation: "Father" }
+  }
+])
+
+// Guardian is "Mother"
+db.students.find({ "guardian.relation": "Mother" })
+
+// Update guardian's phone number for Pallavi
+db.students.updateOne(
+  { name: "Pallavi" },
+  { $set: { "guardian.phone": "9999999999" } }
+)
+
+// Section 3: One-to-Many (Embedded)
+db.teachers.insertMany([
+  {
+    name: "Mr. Patil",
+    classes: ["Physics", "Math"]
+  },
+  {
+    name: "Ms. Roy",
+    classes: ["Biology", "Chemistry"]
+  },
+  {
+    name: "Mr. Sharma",
+    classes: ["Physics", "Computer Science"]
+  }
+])
+
+// Query teachers who teach "Physics"
+db.teachers.find({ classes: "Physics" })
+
+// Add class "Robotics" to Mr. Patil
+db.teachers.updateOne(
+  { name: "Mr. Patil" },
+  { $addToSet: { classes: "Robotics" } }
+)
+
+// Remove "Math" from Mr. Patil
+db.teachers.updateOne(
+  { name: "Mr. Patil" },
+  { $pull: { classes: "Math" } }
+)
+
+// Section 4: One-to-Many (Referenced)
+use academia
+
+// Insert courses
+const course1 = db.courses.insertOne({ title: "Machine Learning", credits: 4 }).insertedId;
+const course2 = db.courses.insertOne({ title: "Database Systems", credits: 3 }).insertedId;
+
+// Insert students referencing courses
+db.students.insertMany([
+  { name: "Pallavi", enrolledCourse: course1 },
+  { name: "Ketan", enrolledCourse: course2 },
+  { name: "Riya", enrolledCourse: course1 }
+])
+
+// Query students enrolled in a specific course
+db.students.find({ enrolledCourse: course1 })
+
+// Query course details by _id
+db.courses.find({ _id: course1 })
+
+// Section 5: $lookup (Join in Aggregation)
+db.students.aggregate([
+  {
+    $lookup: {
+      from: "courses",
+      localField: "enrolledCourse",
+      foreignField: "_id",
+      as: "courseInfo"
+    }
+  },
+  { $unwind: "$courseInfo" },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      courseTitle: "$courseInfo.title"
+    }
+  }
+])
+
+// Join and filter by course title "Machine Learning"
+db.students.aggregate([
+  {
+    $lookup: {
+      from: "courses",
+      localField: "enrolledCourse",
+      foreignField: "_id",
+      as: "courseInfo"
+    }
+  },
+  { $unwind: "$courseInfo" },
+  {
+    $match: { "courseInfo.title": "Machine Learning" }
+  },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      courseTitle: "$courseInfo.title"
+    }
+  }
+])
+
+// Section 5: $lookup (Join in Aggregation)
+db.students.aggregate([
+  {
+    $lookup: {
+      from: "courses",
+      localField: "enrolledCourse",
+      foreignField: "_id",
+      as: "courseInfo"
+    }
+  },
+  { $unwind: "$courseInfo" },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      courseTitle: "$courseInfo.title"
+    }
+  }
+])
+
+// Join and filter by course title "Machine Learning"
+db.students.aggregate([
+  {
+    $lookup: {
+      from: "courses",
+      localField: "enrolledCourse",
+      foreignField: "_id",
+      as: "courseInfo"
+    }
+  },
+  { $unwind: "$courseInfo" },
+  {
+    $match: { "courseInfo.title": "Machine Learning" }
+  },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      courseTitle: "$courseInfo.title"
+    }
+  }
+])
