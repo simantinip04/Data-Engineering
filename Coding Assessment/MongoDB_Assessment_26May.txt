@@ -1,0 +1,429 @@
+//Schema Creation
+//Insertion of initial records
+
+use College
+db.students.insertMany([
+  {
+    name: "Ayaan Khan",
+    age: 21,
+    gender: "Male",
+    department: "Computer Science",
+    courses: [
+      { name: "MongoDB", score: 85 },
+      { name: "Python", score: 90 }
+    ],
+    address: {
+      city: "Hyderabad",
+      state: "Telangana",
+      pincode: 500032
+    },
+    enrollmentDate: ISODate("2024-08-01T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Ayesha Khan",
+    age: 22,
+    gender: "Female",
+    department: "Mathematics",
+    courses: [
+      { name: "Statistics", score: 88 },
+      { name: "Algebra", score: 91 }
+    ],
+    address: {
+      city: "Delhi",
+      state: "Delhi",
+      pincode: 110001
+    },
+    enrollmentDate: ISODate("2024-09-01T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Radheeka Sharma",
+    age: 23,
+    gender: "Female",
+    department: "Mechanical",
+    courses: [
+      { name: "Thermodynamics", score: 78 },
+      { name: "CAD", score: 82 }
+    ],
+    address: {
+      city: "Mumbai",
+      state: "Maharashtra",
+      pincode: 400001
+    },
+    enrollmentDate: ISODate("2023-07-01T00:00:00Z"),
+    isActive: false
+  },
+  {
+    name: "Priya Mishra",
+    age: 20,
+    gender: "Female",
+    department: "Computer Science",
+    courses: [
+      { name: "Python", score: 92 },
+      { name: "Node.js", score: 87 }
+    ],
+    address: {
+      city: "Chennai",
+      state: "Tamil Nadu",
+      pincode: 600001
+    },
+    enrollmentDate: ISODate("2024-10-05T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "John Doe",
+    age: 24,
+    gender: "Male",
+    department: "Electronics",
+    courses: [
+      { name: "Electronics", score: 81 },
+      { name: "Embedded C", score: 85 }
+    ],
+    address: {
+      city: "Hyderabad",
+      state: "Telangana",
+      pincode: 500028
+    },
+    enrollmentDate: ISODate("2022-11-15T00:00:00Z"),
+    isActive: false
+  },
+  {
+    name: "Anjali Patel",
+    age: 22,
+    gender: "Female",
+    department: "Computer Science",
+    courses: [
+      { name: "MongoDB", score: 75 },
+      { name: "Python", score: 78 },
+      { name: "Node.js", score: 80 }
+    ],
+    address: {
+      city: "Ahmedabad",
+      state: "Gujarat",
+      pincode: 380001
+    },
+    enrollmentDate: ISODate("2024-06-20T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Rohan Mehta",
+    age: 23,
+    gender: "Male",
+    department: "Mathematics",
+    courses: [
+      { name: "Algebra", score: 89 },
+      { name: "Python", score: 86 }
+    ],
+    address: {
+      city: "Pune",
+      state: "Maharashtra",
+      pincode: 411001
+    },
+    enrollmentDate: ISODate("2024-07-10T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Sneha Desai",
+    age: 21,
+    gender: "Female",
+    department: "Mechanical",
+    courses: [
+      { name: "CAD", score: 74 },
+      { name: "Python", score: 70 }
+    ],
+    address: {
+      city: "Surat",
+      state: "Gujarat",
+      pincode: 395007
+    },
+    enrollmentDate: ISODate("2023-08-05T00:00:00Z"),
+    isActive: false
+  },
+  {
+    name: "Rahul Singh",
+    age: 20,
+    gender: "Male",
+    department: "Computer Science",
+    courses: [
+      { name: "Java", score: 80 },
+      { name: "Python", score: 77 }
+    ],
+    address: {
+      city: "Lucknow",
+      state: "Uttar Pradesh",
+      pincode: 226001
+    },
+    enrollmentDate: ISODate("2024-12-01T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Divya Nair",
+    age: 25,
+    gender: "Female",
+    department: "Electronics",
+    courses: [
+      { name: "Signal Processing", score: 83 },
+      { name: "Python", score: 85 }
+    ],
+    address: {
+      city: "Kochi",
+      state: "Kerala",
+      pincode: 682001
+    },
+    enrollmentDate: ISODate("2023-05-25T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Karan Malhotra",
+    age: 22,
+    gender: "Male",
+    department: "Mechanical",
+    courses: [
+      { name: "Thermodynamics", score: 82 },
+      { name: "Python", score: 79 }
+    ],
+    address: {
+      city: "Jaipur",
+      state: "Rajasthan",
+      pincode: 302001
+    },
+    enrollmentDate: ISODate("2024-01-10T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Meena Joshi",
+    age: 21,
+    gender: "Female",
+    department: "Mathematics",
+    courses: [
+      { name: "Algebra", score: 84 },
+      { name: "Statistics", score: 88 }
+    ],
+    address: {
+      city: "Bhopal",
+      state: "Madhya Pradesh",
+      pincode: 462001
+    },
+    enrollmentDate: ISODate("2024-02-05T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Imran Sheikh",
+    age: 24,
+    gender: "Male",
+    department: "Computer Science",
+    courses: [
+      { name: "MongoDB", score: 91 },
+      { name: "Node.js", score: 93 },
+      { name: "Python", score: 89 }
+    ],
+    address: {
+      city: "Hyderabad",
+      state: "Telangana",
+      pincode: 500035
+    },
+    enrollmentDate: ISODate("2023-12-15T00:00:00Z"),
+    isActive: true
+  },
+  {
+    name: "Ritika Verma",
+    age: 23,
+    gender: "Female",
+    department: "Electronics",
+    courses: [
+      { name: "VLSI", score: 78 },
+      { name: "Embedded C", score: 80 }
+    ],
+    address: {
+      city: "Nagpur",
+      state: "Maharashtra",
+      pincode: 440001
+    },
+    enrollmentDate: ISODate("2022-06-25T00:00:00Z"),
+    isActive: false
+  },
+  {
+    name: "Aarav Jain",
+    age: 20,
+    gender: "Male",
+    department: "Computer Science",
+    courses: [
+      { name: "MongoDB", score: 87 },
+      { name: "Python", score: 88 },
+      { name: "Node.js", score: 85 }
+    ],
+    address: {
+      city: "Bengaluru",
+      state: "Karnataka",
+      pincode: 560001
+    },
+    enrollmentDate: ISODate("2024-04-01T00:00:00Z"),
+    isActive: true
+  }
+])
+
+
+
+//Crud Operations
+//1. Insert a new student record with embedded courses and address data.
+db.students.insertOne({
+  name: "Simantini Patil",
+  age: 23,
+  gender: "Female",
+  department: "Artificial Intelligence",
+  courses: [
+    { name: "Python", score: 88 },
+    { name: "SQL", score: 91 }
+  ],
+  address: {
+    city: "Pune",
+    state: "Maharashtra",
+    pincode: 415604
+  },
+  enrollmentDate: ISODate("2024-08-01T00:00:00Z"),
+  isActive: true
+})
+
+//2.Update score for a course ( Python ) inside the courses array.
+db.students.updateOne(
+  { name: "Ayaan Khan", "courses.name": "Python" },
+  { $set: { "courses.$.score": 95 } }
+)
+
+//3.Delete a student whose name is "John Doe"
+db.students.deleteOne({ name: "John Doe" })
+
+//4.Find all students in the "Computer Science" department.
+db.students.find({ department: "Computer Science" })
+
+
+//Query Operators
+//5.Find students where age is greater than 20.
+db.students.find({ age: { $gt: 20 } })
+
+//6. Find students enrolled between two dates.
+db.students.find({
+  enrollmentDate: {
+    $gte: ISODate("2024-07-01T00:00:00Z"),
+    $lte: ISODate("2024-10-01T00:00:00Z")
+  }
+})
+
+//7. Find students who are either in "Computer Science" or "Mathematics".
+db.students.find({ department: { $in: ["Computer Science", "Mathematics"] } })
+
+//8. Find students not in the "Mechanical" department.
+db.students.find({ department: { $ne: "Mechanical" } })
+
+//9. Find students whose courses.score is greater than 80.
+db.students.find({ "courses.score": { $gt: 80 } })
+
+
+//Aggregation Framework
+//10. Group by department and count students.
+db.students.aggregate([
+  { $group: { _id: "$department", count: { $sum: 1 } } }
+])
+
+//11.Calculate average age of students per department.
+db.students.aggregate([
+  { $group: { _id: "$department", avgAge: { $avg: "$age" } } }
+])
+
+//12. Sort students by total course score (computed using $sum inside $project ).
+db.students.aggregate([
+  {
+    $project: {
+      name: 1,
+      totalScore: { $sum: "$courses.score" }
+    }
+  },
+  { $sort: { totalScore: -1 } }
+])
+
+//13.Filter only active students before aggregation.
+db.students.aggregate([
+  { $match: { isActive: true } },
+  {
+    $group: {
+      _id: "$department",
+      count: { $sum: 1 }
+    }
+  }
+])
+
+//14. Group and list unique cities from the address field.
+db.students.aggregate([
+  {
+    $group: {
+      _id: null,
+      uniqueCities: { $addToSet: "$address.city" }
+    }
+  }
+])
+
+
+//Projections
+//15. Find students with only name , department , and city fields shown.
+db.students.find(
+  {},
+  { name: 1, department: 1, "address.city": 1, _id: 0 }
+)
+
+//16. Exclude the _id field from output.
+db.students.find({}, { _id: 0 })
+
+//17. Show each student's name and total score using $project .
+db.students.aggregate([
+  {
+    $project: {
+      name: 1,
+      totalScore: { $sum: "$courses.score" }
+    }
+  }
+])
+
+
+//Embedded Documents
+//18. Query students where address.city = "Hyderabad" .
+db.students.find({ "address.city": "Hyderabad" })
+
+//19. Update address.pincode for a student.
+db.students.updateOne(
+  { name: "Ayaan Khan" },
+  { $set: { "address.pincode": 500001 } }
+)
+
+//20. Add a new field landmark to all address objects.
+db.students.updateMany(
+  {},
+  { $set: { "address.landmark": "Near Main Road" } }
+)
+
+
+//Array Operations
+//21. Add a new course "Node.js" to a student's courses array.
+db.students.updateOne(
+  { name: "Ayesha Khan" },
+  { $push: { courses: { name: "Node.js", score: 85 } } }
+)
+
+//22. Remove a course by name "MongoDB" from the array.
+db.students.updateMany(
+  {},
+  { $pull: { courses: { name: "MongoDB" } } }
+)
+
+//23. Find students who have enrolled in both Python and MongoDB.
+db.students.find({
+  "courses.name": { $all: ["Python", "MongoDB"] }
+})
+
+//24. Use $elemMatch to query students where score in MongoDB > 80.
+db.students.find({
+  courses: {
+    $elemMatch: { name: "Python", score: { $gt: 85 } }
+  }
+})
+
