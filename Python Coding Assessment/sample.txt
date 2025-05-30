@@ -1,0 +1,4 @@
+import os
+if not os.path.exists("sample.txt"):
+    with open("sample.txt", "w") as f:
+        f.write("Placeholder text for word‑count demo.")
