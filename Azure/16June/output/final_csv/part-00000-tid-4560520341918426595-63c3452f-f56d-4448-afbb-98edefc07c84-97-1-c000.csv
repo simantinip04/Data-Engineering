@@ -1,0 +1,7 @@
+CourseName,EnrollmentID,StudentName,Category,EnrollDate,ProgressPercent,Rating,Status,IsActive,DurationWeeks,Instructor,EnrollYear,EnrollMonth
+Java Basics,ENR004,Neha,Programming,2024-05-15,0,4.359999999999999,Inactive,0,6,Manoj,2024,5
+Machine Learning 101,ENR005,Zara,AI,2024-05-17,60,4.2,Active,1,8,Samir,2024,5
+Data Analysis with Excel,ENR002,Simran,Analytics,2024-05-12,100,4.7,Completed,0,3,Anjali,2024,5
+Power BI Essentials,ENR003,Aakash,Analytics,2024-05-13,30,3.8,Active,1,5,Rekha,2024,5
+Python for Beginners,ENR006,Ibrahim,Programming,2024-05-18,90,4.6,Completed,0,4,Rakesh,2024,5
+Python for Beginners,ENR001,Aditya,Programming,2024-05-10,80,4.5,Active,1,4,Rakesh,2024,5
