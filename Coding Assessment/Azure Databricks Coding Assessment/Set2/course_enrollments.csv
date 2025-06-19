@@ -1,0 +1,6 @@
+﻿EnrollID,UserID,CourseID,CourseName,Category,EnrollDate,CompletionDate,ProgressPercent,Rating
+E001,U001,C001,Python Basics,Programming,01-04-2024,10-04-2024,100,4
+E002,U002,C002,Excel for Finance,Productivity,02-04-2024,,45,
+E003,U003,C003,ML with PySpark,Data Science,03-04-2024,,30,
+E004,U004,C001,Python Basics,Programming,04-04-2024,20-04-2024,100,5
+E005,U005,C004,Digital Marketing,Marketing,05-04-2024,16-04-2024,100,4
