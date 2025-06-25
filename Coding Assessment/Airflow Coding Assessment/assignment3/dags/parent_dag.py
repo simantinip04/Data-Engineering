@@ -21,9 +21,9 @@ with DAG(
 
     trigger_child = TriggerDagRunOperator(
         task_id="trigger_child_dag",
-        trigger_dag_id="child_dag",  # Should match actual child DAG id
-        conf={"triggered_by": "parent_dag", "run_date": "{{ ds }}"},  # Sending metadata
-        wait_for_completion=False  # Set True if you want parent to wait
+        trigger_dag_id="child_dag",  
+        conf={"triggered_by": "parent_dag", "run_date": "{{ ds }}"},  
+        wait_for_completion=False  
     )
 
     start_task >> trigger_child
