@@ -13,11 +13,9 @@ def fetch_spacex_data():
     print(f"🔍 Requesting data from: {API_URL}")
     response = requests.get(API_URL)
 
-    # Step 4: Fail the DAG if response is not 200
     if response.status_code != 200:
         raise Exception(f"❌ API call failed with status code: {response.status_code}")
 
-    # Step 2: Parse response
     data = response.json()
     launch_name = data.get("name")
     launch_date = data.get("date_utc")
@@ -33,7 +31,6 @@ def fetch_spacex_data():
 
     print(f"🚀 Latest Launch: {launch_name} | Date: {launch_date} | Success: {success}")
 
-    # Step 3: Save to file
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, "w") as f:
         json.dump(parsed, f, indent=4)
