@@ -30,11 +30,11 @@ with DAG(
     wait_for_file = FileSensor(
         task_id="wait_for_file",
         filepath=INCOMING_FILE,
-        fs_conn_id="fs_default",  # default file sensor config
-        poke_interval=30,         # check every 30 seconds
-        timeout=600,              # timeout in 10 minutes
-        mode="poke",              # synchronous mode
-        soft_fail=True            # fail gracefully
+        fs_conn_id="fs_default",  
+        poke_interval=30,         
+        timeout=600,              
+        mode="poke",              
+        soft_fail=True            
     )
 
     read_file = PythonOperator(
