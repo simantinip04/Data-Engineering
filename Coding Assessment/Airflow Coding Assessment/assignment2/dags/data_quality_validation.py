@@ -4,23 +4,19 @@ from datetime import datetime
 import pandas as pd
 import os
 
-# Define file path
 BASE_PATH = os.path.dirname(__file__)
 ORDERS_PATH = os.path.join(BASE_PATH.replace("dags", "data"), "orders.csv")
 
-# Define required columns
 REQUIRED_COLUMNS = ["order_id", "customer_name", "product", "quantity", "price"]
 
 def validate_data():
     print(f"🔍 Reading file from {ORDERS_PATH}")
     df = pd.read_csv(ORDERS_PATH)
 
-    # Check columns
     missing_columns = [col for col in REQUIRED_COLUMNS if col not in df.columns]
     if missing_columns:
         raise Exception(f"❌ Missing columns: {missing_columns}")
 
-    # Check for nulls in required fields
     nulls = df[REQUIRED_COLUMNS].isnull().any()
     if nulls.any():
         raise Exception(f"❌ Null values found in: {list(nulls[nulls].index)}")
