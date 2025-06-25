@@ -5,7 +5,7 @@ import time
 
 def long_running_task():
     print("🔄 Starting long-running task...")
-    time.sleep(20)  # Simulating long task
+    time.sleep(20)  
     print("✅ Completed the task successfully.")
 
 with DAG(
@@ -15,9 +15,9 @@ with DAG(
     catchup=False,
     default_args={
         "retries": 3,
-        "retry_delay": timedelta(seconds=10),  # delay between retries
+        "retry_delay": timedelta(seconds=10), 
         "retry_exponential_backoff": True,
-        "execution_timeout": timedelta(seconds=30),  # hard timeout for the task
+        "execution_timeout": timedelta(seconds=30), 
     },
     description="DAG with retry and timeout configuration"
 ) as dag:
