@@ -10,7 +10,7 @@ def print_child_info(**context):
 with DAG(
     dag_id="child_dag",
     start_date=datetime(2024, 1, 1),
-    schedule_interval=None,  # Only runs when triggered
+    schedule_interval=None,  
     catchup=False,
     description="Child DAG triggered by parent DAG"
 ) as dag:
