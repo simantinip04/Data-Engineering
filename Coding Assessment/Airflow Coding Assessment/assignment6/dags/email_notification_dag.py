@@ -5,7 +5,6 @@ from airflow.models import Variable
 from airflow.utils.trigger_rule import TriggerRule
 from datetime import datetime
 
-# Define fallback email (if variable not set)
 DEFAULT_EMAIL = "fallback@example.com"
 
 def get_alert_email():
@@ -16,8 +15,6 @@ def task_1_logic():
 
 def task_2_logic():
     print("✅ Task 2 executed successfully.")
-    # Uncomment below to simulate failure:
-    # raise Exception("❌ Simulated failure in Task 2")
 
 def success_email_body():
     return "<h3>🎉 All tasks in the DAG completed successfully.</h3>"
@@ -32,7 +29,7 @@ with DAG(
     catchup=False,
     default_args={
         "owner": "airflow",
-        "email_on_failure": False,  # We'll handle it manually with EmailOperator
+        "email_on_failure": False,  
         "retries": 0,
     },
     description="DAG that sends email alerts on success or failure"
