@@ -5,8 +5,8 @@ from datetime import datetime
 import pendulum
 
 def check_day_and_time():
-    now = pendulum.now("Asia/Kolkata")  # or your local timezone
-    weekday = now.weekday()  # 0=Monday, 6=Sunday
+    now = pendulum.now("Asia/Kolkata")  
+    weekday = now.weekday()  
     hour = now.hour
 
     print(f"📆 Today is {now.format('dddd')} at {now.format('HH:mm')}")
@@ -60,7 +60,7 @@ with DAG(
     final_cleanup = PythonOperator(
         task_id="final_cleanup",
         python_callable=cleanup,
-        trigger_rule="none_failed_min_one_success"  # runs if any upstream succeeds
+        trigger_rule="none_failed_min_one_success"  
     )
 
     check_time >> [task_a, task_b, skip_dag]
