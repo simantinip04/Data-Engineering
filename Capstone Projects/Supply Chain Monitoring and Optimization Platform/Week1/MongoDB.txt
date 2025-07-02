@@ -1,0 +1,49 @@
+1. Sample Shipment Logs
+
+use SupplyChainDB;
+
+// Insert sample shipment log documents into shipment_logs collection
+db.shipment_logs.insertMany([
+  {
+    ShipmentID: "SH1001",
+    OrderID: 1,
+    ShipmentDate: new Date("2025-06-01T10:30:00Z"),
+    Carrier: "FedEx",
+    Status: "In Transit",
+    Destination: "123 Main St, City, Country",
+    TrackingNumber: "FDX123456789",
+    Items: [
+      { ItemID: 1, ItemName: "Laptop Charger", Quantity: 30 },
+      { ItemID: 2, ItemName: "SSD Drive", Quantity: 15 }
+    ],
+    Timestamp: new Date()
+  },
+  {
+    ShipmentID: "SH1002",
+    OrderID: 2,
+    ShipmentDate: new Date("2025-06-02T14:00:00Z"),
+    Carrier: "UPS",
+    Status: "Delivered",
+    Destination: "456 Another St, City, Country",
+    TrackingNumber: "UPS987654321",
+    Items: [
+      { ItemID: 1, ItemName: "Laptop Charger", Quantity: 20 }
+    ],
+    Timestamp: new Date()
+  }
+]);
+
+
+2. Create Indexes for Efficient Querying
+
+// Index on ShipmentID for fast exact match lookups
+db.shipment_logs.createIndex({ ShipmentID: 1 });
+
+// Index on OrderID to quickly find shipment logs for a specific order
+db.shipment_logs.createIndex({ OrderID: 1 });
+
+// Compound index on Carrier and Status for filtering shipments by carrier and status
+db.shipment_logs.createIndex({ Carrier: 1, Status: 1 });
+
+// Index on ShipmentDate for date-range queries (e.g., recent shipments)
+db.shipment_logs.createIndex({ ShipmentDate: 1 });

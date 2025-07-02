@@ -1,0 +1,65 @@
+use CustomerOrderMongoDB;
+
+db.customer_feedback.insertMany([
+  {
+    customer_id: 101,
+    feedback: "Delivery was delayed by 2 days. Packaging was damaged.",
+    timestamp: ISODate("2024-05-06T14:00:00Z"),
+    customer_name: "Amit Sharma"
+  },
+  {
+    customer_id: 102,
+    feedback: "Quick delivery. Very satisfied with the service!",
+    timestamp: ISODate("2024-05-07T09:00:00Z"),
+    customer_name: "Priya Singh"
+  }
+customer_id: 103,
+    customer_name: "Raj Verma",
+    feedback: "Order arrived early. Great experience overall.",
+    timestamp: ISODate("2024-05-08T10:30:00Z")
+  },
+  {
+    customer_id: 104,
+    customer_name: "Sneha Reddy",
+    feedback: "The product was good, but delivery status was not updated.",
+    timestamp: ISODate("2024-05-09T16:45:00Z")
+  },
+  {
+    customer_id: 105,
+    customer_name: "Manoj Das",
+    feedback: "Late delivery by 3 days. Not happy with service.",
+    timestamp: ISODate("2024-05-10T11:15:00Z")
+  },
+  {
+    customer_id: 106,
+    customer_name: "Neha Kulkarni",
+    feedback: "Delivered on time but item was slightly damaged.",
+    timestamp: ISODate("2024-05-11T08:20:00Z")
+  },
+  {
+    customer_id: 107,
+    customer_name: "Karan Mehta",
+    feedback: "No issues. Smooth delivery process.",
+    timestamp: ISODate("2024-05-12T14:10:00Z")
+  },
+  {
+    customer_id: 108,
+    customer_name: "Divya Iyer",
+    feedback: "Took too long to receive updates about the order.",
+    timestamp: ISODate("2024-05-13T09:40:00Z")
+  },
+  {
+    customer_id: 109,
+    customer_name: "Arjun Sen",
+    feedback: "Packaging and delivery were excellent.",
+    timestamp: ISODate("2024-05-14T17:00:00Z")
+  },
+  {
+    customer_id: 110,
+    customer_name: "Meera Joshi",
+    feedback: "Delayed by 1 day but delivery personnel was courteous.",
+    timestamp: ISODate("2024-05-15T13:25:00Z")
+  }
+]);
+
+db.customer_feedback.createIndex({ customer_id: 1 });

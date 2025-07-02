@@ -1,0 +1,13 @@
+order_id,customer_id,customer_name,order_date,delivery_date,status,issue,delay_days,delayed
+1,101,Amit Sharma,2024-01-05,2024-05-05,Delivered,No issue,414,1
+2,102,Priya Singh,2024-03-05,,Delayed,Late delivery,0,0
+3,101,Amit Sharma,2024-10-05,2024-09-05,Delivered,No issue,291,1
+4,103,Ravi Kumar,2024-12-05,,Pending,Address not found,0,0
+5,104,Anita Desai,,,Delivered,No issue,0,0
+6,102,Priya Singh,,,Delayed,Late delivery,0,0
+7,105,Manoj Das,,,Delivered,No issue,0,0
+8,106,Neha Kulkarni,,,Delivered,Minor item damage,0,0
+9,107,Karan Mehta,,,Delivered,No issue,0,0
+10,108,Divya Iyer,,,Delayed,No status update,0,0
+11,109,Arjun Sen,,,Delivered,No issue,0,0
+12,110,Meera Joshi,,,Delayed,Delayed by 1 day,0,0
